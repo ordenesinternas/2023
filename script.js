@@ -1,24 +1,36 @@
-// función filterOrders 
+// Obtener referencia a la tabla
+const table = document.getElementById('ordersTable');
 
-const rows = ordersTable.getElementsByTagName('tr');
+// Obtener referencia al body de la tabla 
+const tableBody = table.getElementsByTagName('tbody')[0];
 
-for (let i = 0; i < rows.length; i++) {
+// Crear input de búsqueda 
+const searchInput = document.createElement('input');
+searchInput.type = 'text';
+searchInput.placeholder = 'Buscar...';
 
-  // Obtener el TD de descripción
-  const descTd = rows[i].getElementsByTagName('td')[1];  
+// Agregar el input antes de la tabla
+table.parentNode.insertBefore(searchInput, table);
 
-  if (descTd) {
+// Función para filtrar rows al escribir en el input
+searchInput.addEventListener('keyup', function() {
+
+  // Obtener valor de búsqueda
+  const searchTerm = searchInput.value.toLowerCase();
+
+  // Recorrer rows y filtrar
+  for (let i = 0; i < tableBody.rows.length; i++) {
     
-    // Obtener texto del TD  
-    const text = descTd.textContent || descTd.innerText; 
+    // Obtener el texto de la celda de descripción
+    const cellText = tableBody.rows[i].cells[0].textContent.toLowerCase();
     
-    // Comparar con término de búsqueda
-    if (text.toLowerCase().indexOf(searchTerm) > -1) {
-      rows[i].style.display = '';
+    // Comparar con término de búsqueda 
+    if (cellText.indexOf(searchTerm) > -1) {
+      tableBody.rows[i].style.display = '';
     } else {
-      rows[i].style.display = 'none'; 
+      tableBody.rows[i].style.display = 'none';
     }
 
   }
-
-}
+  
+});
