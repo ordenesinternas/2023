@@ -5,18 +5,18 @@ const table = document.getElementById('ordersTable');
 const tableBody = table.getElementsByTagName('tbody')[0];
 
 // Crear input de búsqueda 
-const searchInput = document.createElement('input');
-searchInput.type = 'text';
-searchInput.placeholder = 'Buscar...';
+const searchInput1 = document.createElement('input');
+searchInput1.type = 'text';
+searchInput1.placeholder = 'Buscar...';
 
 // Agregar el input antes de la tabla
-table.parentNode.insertBefore(searchInput, table);
+table.parentNode.insertBefore(searchInput1, table);
 
 // Función para filtrar rows al escribir en el input
-searchInput.addEventListener('keyup', function() {
+searchInput1.addEventListener('keyup', function() {
 
   // Obtener valor de búsqueda
-  const searchTerm = searchInput.value.toLowerCase();
+  const searchTerm = searchInput1.value.toLowerCase();
 
   // Recorrer rows y filtrar
   for (let i = 0; i < tableBody.rows.length; i++) {
